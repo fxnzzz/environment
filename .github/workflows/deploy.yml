@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node ⚙️
         uses: actions/setup-node@v4
         with:
-          node-version: 20 # React 19 / Vite 6+ works best on Node 20+
+          node-version: 22 # Use 22 or 24 to avoid deprecation errors
           cache: 'npm'
 
       - name: Install and Build 🔧
