@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: "main" # Change to "master" if that is your primary branch
+    branches: "main"
 
 permissions:
   contents: write
@@ -14,6 +14,12 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
+      - name: Setup Node ⚙️
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20 # React 19 / Vite 6+ works best on Node 20+
+          cache: 'npm'
+
       - name: Install and Build 🔧
         run: |
           npm install
@@ -22,5 +28,5 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist # Vite outputs the build to the 'dist' folder
+          folder: dist
           branch: gh-pages
